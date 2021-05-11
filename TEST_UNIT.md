@@ -74,7 +74,7 @@ describe('AuthGuard', () => {
 ```
 
 d'autres exemple ici : 
-- <a href="https://github.com/UgoBar/Cours_angular/blob/main/auth/login.component.spec.ts">login.component.spec.ts</a>
+- <a href="https://github.com/UgoBar/Cours_angular/blob/main/auth/login/login.component.spec.ts">login.component.spec.ts</a>
 - <a href="https://github.com/UgoBar/Cours_angular/blob/main/auth/auth.service.spec.ts">auth.service.spec.ts</a>
 
 
