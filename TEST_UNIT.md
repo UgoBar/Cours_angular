@@ -31,7 +31,7 @@ C'est dans cette fonction que l'on va faire des tests : on va instancier notre c
 à l'intérieur du it : C'est le resultat attendu, finalement, le *'Then'*
 <br>
 
-##### Exemple du test de notre <a href="https://github.com/UgoBar/fsd07/blob/main/angular/crm-app/frontend/src/app/auth/auth.guard.ts">AuthGuard.ts</a>
+##### Exemple du test de notre <a href="https://github.com/UgoBar/Cours_angular/blob/main/auth/auth.guard.ts">AuthGuard.ts</a>
 
 ```javascript
 describe('AuthGuard', () => {
