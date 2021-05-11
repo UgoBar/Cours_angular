@@ -34,7 +34,7 @@ C'est dans cette fonction que l'on va faire des tests : on va instancier notre c
 à l'intérieur du it : C'est le resultat attendu, finalement, le *'Then'*
 <br>
 
-Il en existe beaucoup d'autres, la liste serait trop longue à faire ici et des documentations à ce sujet existe. On peut noter néanmoins les plus utilisées :
+Il en existe beaucoup d'autres, la liste serait trop longue à faire ici et des documentations à ce sujet existe. On peut noter néanmoins les plus utilisées : <br>
 ```toBeTruthy() -> qui existe```  |  ```toBe(valeur attendu)```  |  ```toBeTruth() -> return true``` <br>
 ```toHaveBeenCalledWith(valeur attendu)```  |  ```toHaveBeenCalled() -> qui a été appellé```
 
