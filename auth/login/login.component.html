@@ -1,5 +1,7 @@
 <h2 class="text-center">Connexion</h2>
 
+
+
 <form class="col-lg-6 m-auto" [formGroup]="form" (ngSubmit)="handleSubmit()" style="background-color: #f0f0f0;padding: 3em;">
   <div class="form-group">
     <label for="username">Username</label>
@@ -9,6 +11,8 @@
     <label for="password">Mot de passe</label>
     <input formControlName="password" name="password" type="password" class="form-control" placeholder="Mot de passe" id="password">
   </div>
+
+  <div class="alert alert-danger" *ngIf="error">Connexion impossible, merci de réessayer</div>
 
   <button class="btn btn-success">Enregistrer</button>
 </form>

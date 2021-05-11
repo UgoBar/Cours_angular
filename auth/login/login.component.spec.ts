@@ -5,12 +5,13 @@ import {AuthModule} from "../auth.module";
 import {Router, RouterModule} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
 import {AuthService} from "../auth.service";
-import {of} from "rxjs";
+import {of, throwError} from "rxjs";
 
 describe('LoginComponent', () => {
 
   let fixture: ComponentFixture<LoginComponent>;
   let authService: AuthService;
+  let router: Router;
   let document: HTMLElement;
 
   let usernameInput:HTMLInputElement;
@@ -22,6 +23,7 @@ describe('LoginComponent', () => {
     });
 
     authService = TestBed.inject(AuthService); // GIVEN
+    router = TestBed.inject(Router); // GIVEN
 
     fixture = TestBed.createComponent(LoginComponent);
     document = fixture.nativeElement;
@@ -59,21 +61,17 @@ describe('LoginComponent', () => {
 
 
   /**
-   * 3EME TEST : redirection
+   * 3EME TEST : Bon identifiants = redirection
    */
   it('Should redirect if credentials are OK', () => {
 
-    const router: Router = TestBed.inject(Router);
     const spyOnRouter = spyOn(router, 'navigateByUrl');
-
     const spyOnAuth = spyOn(authService, 'authenticate').and.returnValue(of('MOCK_TOKEN'));
 
     usernameInput.value = 'mail@mail.com';
     usernameInput.dispatchEvent(new Event('input'));
-
     passwordInput.value = 'password';
     passwordInput.dispatchEvent(new Event('input'));
-
     document.querySelector('button').click();
 
     expect(spyOnAuth).toHaveBeenCalledWith({
@@ -85,22 +83,26 @@ describe('LoginComponent', () => {
   })
 
   /**
-   * 4EME TEST -- Mauvais identifiants
+   * 4EME TEST -- Mauvais identifiants = pas de redirection
    */
   it('Should not redirect if credentials are BAD', () => {
 
-    spyOn(authService, 'authenticate').and.returnValue(of('MOCK_TOKEN'));
+    spyOn(authService, 'authenticate').and.returnValue(throwError('BAD CREDENTIALS'));
+    const spyOnRouter = spyOn(router, 'navigateByUrl');
+
+    expect(document.querySelector('.alert-danger')).not.toBeTruthy();
 
     usernameInput.value = '';
     usernameInput.dispatchEvent(new Event('input'));
     passwordInput.value = '';
     passwordInput.dispatchEvent(new Event('input'));
-    document.querySelector('form').click();
+    document.querySelector('button').click();
 
-    expect(fixture.componentInstance.form.value).toEqual({
-      username: '',
-      password: ''
-    })
+    fixture.detectChanges();
+
+    expect(spyOnRouter).not.toHaveBeenCalled();
+    expect(document.querySelector('.alert-danger')).toBeTruthy();
+    expect(document.querySelector('.alert-danger').textContent).toBe('Connexion impossible, merci de réessayer');
   })
 
 });

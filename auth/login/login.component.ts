@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
+  error = false;
 
   form = new FormGroup({
     username: new FormControl(),
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
   handleSubmit() {
     this.auth.authenticate(this.form.value).subscribe({
       next: () => this.router.navigateByUrl('/customers'),
-      error: error => console.log(error),
+      error: () => this.error = true,
     })
   }
 
