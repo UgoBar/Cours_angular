@@ -1,4 +1,4 @@
-# <center> TEST UNITAIRES ANGULAR
+<h2 style="text-center">TEST UNITAIRES ANGULAR</h2> 
 
 
 
@@ -53,7 +53,7 @@ Simule l'injection de service dans notre classe
 <br>
 
 - **```TestBed.createComponent()```**
-Simule la création d'un composant, d'une "fixture". Par exemple :
+Simule la création d'un composant, d'une "fixture". Par exemple :<br>
 &nbsp;```fixture = TestBed.createComponent(LoginComponent);```
 <br>
 
