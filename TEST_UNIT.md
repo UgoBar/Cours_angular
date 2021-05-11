@@ -18,11 +18,11 @@ Défini la classe, fonction ou la méthode que l'on est en train de tester, dans
 <br>
 
 - **```beforeEach()```**
-Défini des actions à effectuer avant chaque test
+Défini des actions à effectuer avant chaque test. C'est ici que l'on va mettre des éléments nécessaires à plusieurs test afin de factoriser notre code.
 <br>
 
 - **```it()```**
-C'est dans cette fonction que l'on va faire des tests : on va instancier notre classe ou faire appel à nos méthodes en simulant les différents éléments nécessaires comme des paramètres de fonctions ou des dépendances dans un constructeur. Le paramètre de ce "it" doit contenir une chaine de caractère qui est une phrase qui décrit le comportement attendu. <br>
+C'est dans cette fonction que l'on va faire des tests : on va instancier notre classe, faire appel à nos méthodes en simulant les différents éléments nécessaires comme des paramètres de fonctions ou des dépendances dans un constructeur. Le paramètre de ce "it" doit contenir une chaine de caractère qui serait une phrase décrivant le comportement attendu. <br>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A l'intérieur de cette fonction on s'attend à avoir : <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - *Given :* Etant donné - ce dont on a besoin (il peut y en avoir plusieurs) <br>
@@ -31,12 +31,11 @@ C'est dans cette fonction que l'on va faire des tests : on va instancier notre c
 <br>
 
 - **```expect()```**
-à l'intérieur du it : C'est le resultat attendu, finalement, le *'Then'*
-<br>
-
-Il en existe beaucoup d'autres, la liste serait trop longue à faire ici et des documentations à ce sujet existe. On peut noter néanmoins les plus utilisées : <br>
+à l'intérieur du it : C'est le resultat attendu, finalement, le *'Then'*. Plusieurs fonctions peuvent être appelées pour faire des vérifications. La liste serait trop longue à faire ici et des documentations à ce sujet existe. On peut noter néanmoins les plus utilisées : <br>
 ```toBeTruthy() -> qui existe```  |  ```toBe(valeur attendu)```  |  ```toBeTruth() -> return true``` <br>
 ```toHaveBeenCalledWith(valeur attendu)```  |  ```toHaveBeenCalled() -> qui a été appellé```
+
+<br>
 
 *documentation* : <a href="https://angular.io/guide/testing-services">Tester les services</a> | <a href="https://angular.io/guide/testing-components-basics">Tester les Composants</a>
 
@@ -54,7 +53,7 @@ Simule l'injection de service dans notre classe
 
 - **```TestBed.createComponent()```**
 Simule la création d'un composant, d'une "fixture". Par exemple :<br>
-&nbsp;```fixture = TestBed.createComponent(LoginComponent);```
+```fixture = TestBed.createComponent(LoginComponent);```
 <br>
 
 - **```detectChanges()```**
@@ -62,7 +61,7 @@ Détecte les changements sur notre Composant fictif, de notre "fixture"
 <br>
 
 - **```spyOn(service | class, 'méthode');```**
-Cette méthode nous permet de simuler la méthode d'un service sans toucher à ce dernier. Par exemple on pourrait simuler la méthode ```navigateByUrl``` du Router : 
+Cette méthode nous permet de simuler la méthode d'un service sans toucher à ce dernier. Par exemple on pourrait simuler la méthode ```navigateByUrl``` du Router : <br>
 &nbsp;```spyOn(TestBed.inject(Router), 'navigateByUrl');```
 
 
