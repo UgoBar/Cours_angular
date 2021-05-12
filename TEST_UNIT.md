@@ -22,12 +22,14 @@ Défini des actions à effectuer avant chaque test. C'est ici que l'on va mettre
 <br>
 
 - **```it()```**
-C'est dans cette fonction que l'on va faire des tests : on va instancier notre classe, faire appel à nos méthodes en simulant les différents éléments nécessaires comme des paramètres de fonctions ou des dépendances dans un constructeur. Le paramètre de ce "it" doit contenir une chaine de caractère qui serait une phrase décrivant le comportement attendu. <br>
+C'est dans cette fonction que l'on va lui donner ce dont on a besoin (*Given*), faire appel à nos méthodes en simulant les différents éléments nécessaires (*When*) pour enfin tester les résultats attendus (*Then*).<br>Le 1er paramètre de ce "it" doit contenir une chaine de caractère qui serait une phrase décrivant le comportement attendu. <br>Le 2eme paramètre est la fonction de test, qui peut soit être anonyme, soit recevoir la fonction **"done"** en paramètre, ce qui rendra notre it asyncrhone. Il attendra alors l'appel de ```done()```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A l'intérieur de cette fonction on s'attend à avoir : <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - *Given :* Etant donné - ce dont on a besoin (il peut y en avoir plusieurs) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - *When :*  Quand on appelle la méthode ou la fonction à tester <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - *Given :* Etant donné - ce dont on a besoin (classes, méthodes, variables etc...) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - *When :*  Quand on appelle la ou les méthode(s)/fonction(s) à tester <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - *Then :*  Le resultat qui est attendu avec la méthode **```expect```**
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <br>
 
 - **```expect()```**
@@ -126,3 +128,5 @@ d'autres exemple ici :
 ```ng test --browsers=ChromeHeadless``` lance les test sans le navigateur
 
 ```ng test --browsers=ChromeHeadless --reporters=spec``` en utilisant Karma (+ visuel dans la console !)
+
+```ng test --browsers=ChromeHeadless --reporters=spec --include=path/to/folder``` pour tester un dossier précis
